@@ -1,0 +1,17 @@
+CORE_PEER_ADDRESS=peer:7052 CORE_CHAINCODE_ID_NAME=hyperledger_lab_01:0 ./hyperledger_lab_01
+
+
+peer chaincode install -p chaincodedev/chaincode/hyperledger_lab_01 -n hyperledger_lab_01 -v 0
+
+
+peer chaincode instantiate -n hyperledger_lab_01 -v 0 -c '{"Args":[]}' -C myc
+
+
+peer chaincode invoke -n hyperledger_lab_01 -C myc -c '{"Args":["set", "key1", "Rahul Bairathi"]}' -C myc
+
+
+peer chaincode query -n hyperledger_lab_01 -C myc -c '{"Args":["get", "key1"]}' -C myc
+
+peer chaincode query -n hyperledger_lab_01 -C myc -c '{"Args":["history", "key1"]}' -C myc
+
+peer chaincode invoke -n hyperledger_lab_01 -C myc -c '{"Args":["delete", "key1"]}' -C myc
